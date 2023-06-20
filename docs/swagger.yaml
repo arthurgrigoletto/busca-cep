@@ -1,0 +1,51 @@
+basePath: /
+definitions:
+  entity.Address:
+    properties:
+      city:
+        type: string
+      neighborhood:
+        type: string
+      state:
+        type: string
+      street:
+        type: string
+      zip:
+        type: string
+    type: object
+host: localhost:3333
+info:
+  contact:
+    email: arthur.grigoletto.lima@gmail.com
+    name: Arthur Grigoletto
+    url: http://www.swagger.io/support
+  description: API para buscar cep em diversos providers e retornar o mais rápido
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Busca CEP
+  version: "1.0"
+paths:
+  /search/{cep}:
+    get:
+      consumes:
+      - application/json
+      description: Get CEP
+      parameters:
+      - description: CEP
+        in: path
+        name: cep
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Address'
+      summary: Get CEP
+      tags:
+      - cep
+swagger: "2.0"
